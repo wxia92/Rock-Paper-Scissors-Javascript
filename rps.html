@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+</head>
+<body>
+    <script>
+        function computerplay() {
+            if (Math.floor(Math.random()*3) == 0) {
+                hand = "rock";}
+                else if  (Math.floor(Math.random()*3) == 1) {
+                    hand = "paper";}
+                else { hand = "scissors";}
+                return hand;
+                }
+        
+       
+        function playRound(playerSelection, computerSelection){
+            while (playerSelection != "rock" && playerSelection != "paper" &&
+                playerSelection != "scissors") {
+                alert("please select rock paper or scissors");
+                playerSelection = prompt("Choose your hand").toLowerCase();
+            }
+            
+            if (playerSelection == computerSelection) {
+                return "draw";}
+                else if ((playerSelection == "rock" && computerSelection == "scissors")
+                       ||(playerSelection == "paper" && computerSelection == "rock")
+                       ||(playerSelection == "scissors" && computerSelection == "paper")
+                        ){
+                        return "win";}
+                else {
+                    return "lose";}
+        }
+        function game() {
+            let cScore = 0;
+            let pScore = 0;
+            for (let i = 1; i <= 5; i++) {
+                let playerSelection = prompt("Choose your hand").toLowerCase()
+                let computerSelection = computerplay();
+                let score = playRound(playerSelection,computerSelection)
+                if (score == "win") {
+                    pScore = pScore + 1; 
+                    console.log("You have won! " + playerSelection + " beats " + computerSelection);
+                    }
+                    else if (score == "lose") {
+                    cScore = cScore + 1;
+                    console.log("You have lost! " + computerSelection + " beats " + playerSelection);
+                    }
+                    else {console.log("It's a draw, you both selected " + playerSelection);}      
+        }
+        console.log("Your Score: " + pScore + " Computer Score: " + cScore)
+    }
+    console.log(game())
+    
+    </script>
+</body>
+</html>
+
+
