@@ -9,13 +9,27 @@
     
 </head>
 <body>
+    <h3>Rock Paper Scissors!</h3>
+    <div class="game-area">
+        <div class="player-area">Player <br> <img id="player-hand" src="" height="80px"> </div>
+        <div class="score">
+            <div class="score-header">Score:</div><div class="game-score">0 - 0</div>
+            <p class="round-result">Round result: <span id='round-result'>N/A</span></p> 
+            <p id='display-winner'></p>
+        </div>
+        <div class="cpu-area">Computer <br> <img id="cpu-hand" src="" height="80px"> </div>
+    </div>
+    
+    <div class="buttons">
+        <button id='rock'>ROCK</button>
+        <button id='paper'>PAPER</button>
+        <button id='scissors'>SCISSORS</button>
+    </div>
     <button class='reset'>RESET</button>
-    <button id='rock'>ROCK</button>
-    <button id='paper'>PAPER</button>
-    <button id='scissors'>SCISSORS</button>
-    <p>Round result: <span id='round-result'></span></p> 
-    <p id='score'>Score (P - C): <span id='total-score'>0 - 0</span></p>
-    <p id='display-winner'></p>
+   
+    
+   
+    
     
     <script src="main.js"></script>
 </body>

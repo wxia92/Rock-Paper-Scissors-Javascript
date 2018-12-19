@@ -2,7 +2,7 @@ let hand;
 let cScore = 0;
 let pScore = 0;
 let roundResult = document.querySelector('#round-result');
-let totalScore = document.querySelector('#total-score');
+let gameScore = document.querySelector('.game-score');
 let displayWinner = document.querySelector('#display-winner');
 
 function computerPlay() {
@@ -12,7 +12,7 @@ function computerPlay() {
         hand = "paper";}
         else { hand = "scissors";}
         return hand;
-        }
+    }
 
 
 function playRound(playerSelection, computerSelection){
@@ -24,7 +24,7 @@ function playRound(playerSelection, computerSelection){
     }
     if (playerSelection == computerSelection) {
         roundResult.textContent = "It's a draw, you both selected " + playerSelection
-        totalScore.textContent = pScore + " - " + cScore;
+        gameScore.textContent = pScore + " - " + cScore;
         }
         else if ((playerSelection == "rock" && computerSelection == "scissors")
                ||(playerSelection == "paper" && computerSelection == "rock")
@@ -32,12 +32,12 @@ function playRound(playerSelection, computerSelection){
                 ) {
             roundResult.textContent = "You have won! " + playerSelection + " beats " + computerSelection;
             pScore++;
-            totalScore.textContent = pScore + " - " + cScore;
+            gameScore.textContent = pScore + " - " + cScore;
             }
         else {
             roundResult.textContent = "You have lost! " + computerSelection + " beats " + playerSelection;
             cScore++;
-            totalScore.textContent = pScore + " - " + cScore;
+            gameScore.textContent = pScore + " - " + cScore;
             }
     if (pScore == 5) {
         displayWinner.textContent = "You win!";
@@ -50,9 +50,11 @@ function playRound(playerSelection, computerSelection){
 function reset() {
     cScore = 0;
     pScore = 0;
-    roundResult.textContent = ''
-    totalScore.textContent = "0 - 0"
+    roundResult.textContent = 'N/A'
+    gameScore.textContent = "0 - 0"
     displayWinner.textContent = ""
+    document.querySelector("#player-hand").src = "";
+    document.querySelector("#cpu-hand").src = ``;
 }
 
 let resetGame = document.querySelector('.reset');
@@ -60,17 +62,30 @@ resetGame.addEventListener('click', reset);
 
 let chooseRock = document.querySelector('#rock')
 chooseRock.addEventListener('click', function playRock() {
-    playRound("rock", computerPlay())
+    playRound("rock", computerPlay());
+    if (pScore != 5 && cScore != 5) {
+        document.querySelector("#player-hand").src = "images/paper.png";
+        document.querySelector("#cpu-hand").src = `images/${hand}.png`;
+        }
 })
 
 let choosePaper = document.querySelector('#paper')
 choosePaper.addEventListener('click', function playPaper(){
-    playRound("paper", computerPlay())
+    playRound("paper", computerPlay());
+    if (pScore != 5 && cScore != 5) {
+    document.querySelector("#player-hand").src = "images/paper.png";
+    document.querySelector("#cpu-hand").src = `images/${hand}.png`;
+    }
+    
 })
 
 let chooseScissors = document.querySelector('#scissors')
 chooseScissors.addEventListener('click', function playScissors(){
     playRound("scissors", computerPlay())
+    if (pScore != 5 && cScore != 5) {
+        document.querySelector("#player-hand").src = "images/paper.png";
+        document.querySelector("#cpu-hand").src = `images/${hand}.png`;
+        }
 })
 
 
